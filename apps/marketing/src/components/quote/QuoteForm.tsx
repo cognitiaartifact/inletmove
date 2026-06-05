@@ -83,6 +83,14 @@ export default function QuoteForm() {
         );
       }
       setState({ kind: 'success', id: json.quoteId ?? json.id });
+      // GA4 lead conversion tracking
+      if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'engagement',
+          event_label: 'quote_form',
+          value: 1,
+        });
+      }
       form.reset();
       if (typeof window !== 'undefined') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
