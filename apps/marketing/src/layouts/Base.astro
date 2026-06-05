@@ -85,6 +85,22 @@ import StickyMobileCTA from '../components/shared/StickyMobileCTA.astro';
     />
 
     <StructuredData extraSchema={allExtraSchema} />
+
+    {/* Google Search Console verification */}
+    {import.meta.env.PUBLIC_GSC_VERIFICATION && (
+      <meta name="google-site-verification" content={import.meta.env.PUBLIC_GSC_VERIFICATION} />
+    )}
+
+    {/* Google Analytics 4 */}
+    {import.meta.env.PUBLIC_GA4_ID && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_ID}`}></script>
+      <script is:inline define:vars={{ ga4Id: import.meta.env.PUBLIC_GA4_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', ga4Id);
+      </script>
+    )}
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>

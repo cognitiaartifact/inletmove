@@ -5,6 +5,8 @@ interface ImportMetaEnv {
   readonly PUBLIC_SITE_URL: string;
   readonly PUBLIC_QUOTE_ENDPOINT: string;
   readonly PUBLIC_FEED_URL?: string;
+  readonly PUBLIC_GA4_ID?: string;
+  readonly PUBLIC_GSC_VERIFICATION?: string;
 }
 
 interface ImportMeta {
